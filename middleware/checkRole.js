@@ -1,6 +1,6 @@
 const models = require("../models");
 async function checkRole(request, response, next) {
-  let id = request.body.id || request.params.id || request.body.adminId;
+  let id = request.body.id || request.params.id || request.body.adminId || req.user.id;
   // console.log(id)
   if (id) {
     const user = await models.User.findOne({ where: { id: id } });
